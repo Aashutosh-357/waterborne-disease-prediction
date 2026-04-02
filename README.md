@@ -1,63 +1,87 @@
 # 💧 AquaGuard AI: Water-Borne Disease Prediction System
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20App-brightgreen?style=for-the-badge&logo=render)](https://water-quality-frontend-58dl.onrender.com)
+[![GitHub Stars](https://img.shields.io/github/stars/Aashutosh-357/waterborne-disease-prediction?style=for-the-badge)](https://github.com/Aashutosh-357/waterborne-disease-prediction)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-### 🛡️ AI-Powered Early Warning Surveillance
-AquaGuard AI is a sophisticated full-stack surveillance system designed to forecast water-borne disease outbreaks (specifically **Cholera** and **Typhoid**) with up to 88% accuracy. By analyzing environmental, meteorological, and water quality parameters, the system provides health authorities with a **1–3 week lead time** to implement life-saving preventive measures.
+## 🛡️ AI-Powered Early Warning Surveillance
+
+**AquaGuard AI** is a sophisticated full-stack surveillance system designed to forecast water-borne disease outbreaks (specifically **Cholera** and **Typhoid**) with up to **88% accuracy**. By analyzing environmental, meteorological, and water quality parameters, the system provides health authorities with a **1–3 week lead time** to implement life-saving preventive measures.
 
 ---
 
-## 📽️ Visual Journey
-- **Live Assessment:** Real-time risk scoring using trained XGBoost models.
-- **Analytics Dashboard:** Deep dives into 5.25M+ training records and model performance metrics.
-- **Responsive Design:** Optimized for field access via mobile and tablet devices.
+## 📽️ Key Features
+
+- **🧠 Predictive Intelligence:** Real-time risk scoring using high-performance **XGBoost Ensemble Models** trained on 5.25M+ records.
+- **📊 Analytics Dashboard:** Interactive visualizations for deep dives into environmental trends and model performance metrics.
+- **📲 Mobile First:** Fully responsive UI built with **Tailwind CSS v4** and **Shadcn UI**, optimized for field health workers.
+- **⚡ High Performance:** Optimized for fast inference and real-time feedback with **React 18** and **FastAPI**.
 
 ---
 
 ## 🏗️ Technical Architecture
 
 ### **Core Stack**
-- **Frontend:** React 18 (Vite), TypeScript, Tailwind CSS, Shadcn UI, Lucide Icons.
-- **Backend:** FastAPI (Python 3.12), Uvicorn.
-- **Intelligence:** XGBoost Ensemble Classifier, Scikit-learn, Pandas.
-- **Infrastructure:** Docker, Docker Compose, Render (CI/CD Ready).
 
-### **Data Insights**
-The model is trained on a comprehensive dataset encompassing:
-- **Environmental Factors:** Rainfall (mm), Temperature (°C), Humidity (%).
-- **Water Quality:** pH Levels, Treatment Status (Chlorinated/Untreated), Source type (Piped, Well, River).
-- **Demographics:** Population Density, Area Type (Urban/Rural).
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | ![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white) |
+| **Backend** | ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi) ![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54) ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=pydantic&logoColor=white) |
+| **Data & ML** | ![XGBoost](https://img.shields.io/badge/XGBoost-EB2529?style=flat&logo=xgboost&logoColor=white) ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=flat&logo=pandas&logoColor=white) |
+| **DevOps** | ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white) ![Render](https://img.shields.io/badge/Render-%46E3B7?style=flat&logo=render&logoColor=white) |
+
+### **Information Synthesis**
+The model processes a comprehensive multi-modal dataset:
+-   **🌍 Environmental:** Rainfall (mm), Temperature (°C), Humidity (%), Flooding status.
+-   **💧 Water Quality:** pH Levels, Chlorine treatment status, Source type (Piped, Well, River).
+-   **👥 Demographics:** Population Density, Area Classification (Urban/Rural).
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- **Docker & Docker Compose** (Recommended for zero-configuration setup)
+### **1. Rapid Deployment (Docker)**
+The most reliable way to run AquaGuard AI is using Docker.
 
-### Local Launch (Docker)
-1. **Clone the Project:**
-   ```bash
-   git clone https://github.com/AmanKushwaha47/Water_Quality_Prediction.git
-   cd Water_Quality_Prediction
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/AmanKushwaha47/Water_Quality_Prediction.git
+cd Water_Quality_Prediction
 
-2. **One-Command Boot:**
-   ```bash
-   docker compose up --build
-   ```
+# Start the entire ecosystem
+docker compose up --build
+```
 
-3. **Access the Modules:**
-   - 🌐 **Frontend UI:** `http://localhost:5173`
-   - 📡 **Backend API (Swagger):** `http://localhost:8000/docs`
+Access the system:
+-   🌐 **Frontend:** `http://localhost:5173`
+-   📡 **API Docs (Swagger):** `http://localhost:8000/docs`
+
+### **2. Manual Local Setup**
+
+#### **Backend**
+```bash
+cd Backend
+python -m venv venv
+source venv/bin/activate # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+#### **Frontend**
+```bash
+cd Frontend
+npm install
+npm run dev
+```
 
 ---
 
 ## 📡 API Reference
 
-### Predict Outbreak Risk
+### **Epidemiological Risk Prediction**
 `POST /api/predict`
 
-**Request Body:**
+**Payload:**
 ```json
 {
   "area_type": "Urban",
@@ -72,42 +96,42 @@ The model is trained on a comprehensive dataset encompassing:
 }
 ```
 
-**Successful Response:**
+**Response:**
 ```json
 {
   "prediction": 1,
   "probability": 0.92,
   "risk_level": "High Risk",
-  "recommendation": "Immediate intervention required: Chlorine distribution and public warnings."
+  "recommendation": "Immediate intervention: Chlorine distribution and public warnings."
 }
 ```
 
 ---
 
-## 🌍 Deployment on Render
+## 📁 Project Structure
 
-This project is pre-configured with `Dockerfiles` optimized for Render's environment variable system.
-
-### Quick Deploy (Recommended)
-1. Push this repository to GitHub.
-2. In Render, choose **New +** -> **Blueprint** and select this repo.
-3. Render will read `render.yaml` and create:
-   - `water-quality-backend` (Docker Web Service)
-   - `water-quality-frontend` (Static Site)
-4. Set environment variables in Render dashboard:
-   - Frontend: `VITE_API_URL` = your backend URL (for example `https://water-quality-backend.onrender.com`)
-   - Backend: `FRONTEND_URL` = your frontend URL (for example `https://water-quality-frontend.onrender.com`)
-5. Redeploy both services once after setting env vars.
-
-1. **Backend:** Deploy `Backend/` as a **Web Service**. Set environment variable `PORT` to bind dynamically.
-2. **Frontend:** Deploy `Frontend/` as a **Static Site**. Set `VITE_API_URL` to point to your backend.
+```text
+.
+├── Backend/          # FastAPI App & Machine Learning Models
+│   ├── app/          # API Core & Business Logic
+│   ├── src/          # ML Pipeline & Utils
+│   └── data/         # Datasets & Pickled Models
+├── Frontend/         # React 18 / Vite / Tailwind UI
+│   ├── src/          # Components, Pages & Styles
+│   └── public/       # Static assets
+├── docker-compose.yml # Container orchestration
+└── render.yaml       # Infrastructure-as-code for deployment
+```
 
 ---
 
 ## 📄 License & Attribution
-- Built as a **Capstone Project** for AI-driven Public Health.
-- UI Design inspired by modern glassmorphism principles.
-- Dataset source: Waterborne Disease Records (Regional Health Department).
+-   **Capstone Project:** Developed as an AI-driven Public Health surveillance solution.
+-   **Design:** UI inspired by modern glassmorphism principles and Shadcn/UI.
+-   **Dataset:** Sourced from Regional Health Department records on water-borne disease incidence.
 
 ---
 
+<div align="center">
+  Developed with ❤️ for Global Public Health.
+</div>
